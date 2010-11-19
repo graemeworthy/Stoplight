@@ -23,7 +23,6 @@ get '/*/front' do
   
 end       
 
-
 get '/:myapp' do
     setup(params[:myapp])
     return 404 unless @myapp
@@ -43,6 +42,8 @@ put '/:myapp' do
    case params[:status]
    when 'green'
        @myapp[:status] = 'green'
+   when 'yellow'
+       @myapp[:status] = 'yellow'
    when 'red'
        @myapp[:status] = 'red'
    else

@@ -1,2 +1,2 @@
-require 'amigreen'
+require 'stoplight'
 run Sinatra::Application
