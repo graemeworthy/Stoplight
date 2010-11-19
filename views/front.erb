@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<title><%= name %></title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Graeme Worthy"> 
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/themes/south-street/jquery-ui.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+  <script> 
+  $(function(){
+	$('body').css("background-color", '#ccc')
+  check_status()
+  setInterval(check_status, 10000)
+});
+  function check_status(){
+    var app_name = window.location.pathname.split('/')[1]
+     $.get("/" + app_name, function(data, status){
+        switch(data){
+            case 'green':
+            console.log('greened!');
+                 $('body').animate({"background-color": '#0c0'}, 5000);
+              break;
+            case 'red':
+            console.log('redded!');
+
+                 $('body').animate({"background-color": '#c00'}, 5000);
+              break;
+            default:
+            console.log('empty!');
+
+              $('body').animate({"background-color": '#ccc'}, 5000);
+              break;
+
+        }
+     });
+  }
+
+  </script>
+  <style>
+	 p{
+	   font-family: verdana;
+	   color: #fff;
+	   letter-spacing: 0.1em;
+	   text-decoration: none;
+	 }
+	</style>
+</head>
+<body>
+  <p><%= name %></p>
+</body>
+</html>
