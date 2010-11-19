@@ -19,17 +19,12 @@
      $.get("/" + app_name, function(data, status){
         switch(data){
             case 'green':
-            console.log('greened!');
                  $('body').animate({"background-color": '#0c0'}, 5000);
               break;
             case 'red':
-            console.log('redded!');
-
                  $('body').animate({"background-color": '#c00'}, 5000);
               break;
             default:
-            console.log('empty!');
-
               $('body').animate({"background-color": '#ccc'}, 5000);
               break;
 
