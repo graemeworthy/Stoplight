@@ -1,0 +1,41 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    abstract (1.0.0)
+    autotest (4.4.4)
+    autotest-fsevent (0.2.3)
+      sys-uname
+    diff-lcs (1.1.2)
+    erubis (2.6.6)
+      abstract (>= 1.0.0)
+    mime-types (1.16)
+    rack (1.2.1)
+    rack-test (0.5.6)
+      rack (>= 1.0)
+    rest-client (1.6.1)
+      mime-types (>= 1.16)
+    rspec (2.1.0)
+      rspec-core (~> 2.1.0)
+      rspec-expectations (~> 2.1.0)
+      rspec-mocks (~> 2.1.0)
+    rspec-core (2.1.0)
+    rspec-expectations (2.1.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.1.0)
+    sinatra (1.1.0)
+      rack (~> 1.1)
+      tilt (~> 1.1)
+    sys-uname (0.8.4)
+    tilt (1.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  autotest (~> 4.4.4)
+  autotest-fsevent (~> 0.2.3)
+  erubis (~> 2.6.6)
+  rack-test (~> 0.5.6)
+  rest-client (~> 1.6.1)
+  rspec (~> 2.1.0)
+  sinatra (~> 1.1.0)

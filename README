@@ -7,5 +7,29 @@ PUT /myapp?status=red sets status red
 POST /myapp creates an app if there is none (put does this too)
 DELETE /myapp deletes an app
 
-GET /myapp/front returns a pretty little javascript to keep you updated on your app's status
+Need a frontend?
+GET /myapp/front returns a pretty little javascript to keep you updated on your apps status
+                
+Usage Hints!
+=================
+
+add this to your .autotest file, for perpetual greenosity
+
+    require 'rest_client'                                                                                
+
+    @appname = 'myapp'
+
+    Autotest.add_hook :red do
+      RestClient.put "http://stoplightapp.heroku.com/#{@appname}", :status => 'red'
+    end
+
+    Autotest.add_hook :green do
+      RestClient.put "http://stoplightapp.heroku.com/#{@appname}", :status => 'green'
+    end
+
+
+  
+
+
+
 

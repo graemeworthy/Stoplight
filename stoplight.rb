@@ -55,6 +55,6 @@ end
 delete '/:myapp' do
    setup(params[:myapp])
     'deleting ' + params[:myapp]
-    @@apps[@name] = {}
+    @@apps.delete @name
     return 200
 end
