@@ -16,24 +16,32 @@
 });
   function check_status(){
     var app_name = window.location.pathname.split('/')[1]
-     $.get("/" + app_name, function(data, status){
-        switch(data){
-            case 'green':
-                 $('body').animate({"background-color": '#0c0'}, 5000);
-              break;
-            case 'yellow':
-                 $('body').animate({"background-color": '#cc0'}, 5000);
-              break;
-            case 'red':
-                 $('body').animate({"background-color": '#c00'}, 5000);
-              break;
+     $.ajax({
+       url: "/" + app_name, 
+       success: function(data, status){
+            switch(data){
+                case 'green':
+                     $('body').animate({"background-color": '#0c0'}, 5000);
+                  break;
+                case 'yellow':
+                     $('body').animate({"background-color": '#cc0'}, 5000);
+                  break;
+                case 'red':
+                     $('body').animate({"background-color": '#c00'}, 5000);
+                  break;
 
-            default:
-              $('body').animate({"background-color": '#ccc'}, 5000);
-              break;
+                default:
+                  $('body').animate({"background-color": '#ccc'}, 5000);
+                  break;
 
-        }
-     });
+            }
+          },
+          error: function(){
+            $('body').animate({"background-color": '#ccc'}, 5000);
+            
+          },
+         
+       });
   }
 
   </script>

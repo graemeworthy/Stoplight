@@ -1,2 +1,2 @@
-require 'stoplight'
+require './stoplight'
 run Sinatra::Application
