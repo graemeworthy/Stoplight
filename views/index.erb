@@ -97,19 +97,11 @@ require 'rest_client'
 @appname = 'myapp'
 
 Autotest.add_hook :red do
-  RestClient.put "
-<a href='http://stoplightapp.heroku.com/#{@appname}'>
-http://stoplightapp.heroku.com/#{@appname}
-</a>
-", :status =&gt; 'red'
+  RestClient.put "http://stoplightapp.heroku.com/#{@appname}", :status =&gt; 'red'
 end
 
 Autotest.add_hook :green do
-  RestClient.put "
-<a href='http://stoplightapp.heroku.com/#{@appname}'>
-http://stoplightapp.heroku.com/#{@appname}
-</a>
-", :status =&gt; 'green'
+  RestClient.put "http://stoplightapp.heroku.com/#{@appname}", :status =&gt; 'green'
 end
 
 </code>

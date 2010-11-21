@@ -46,15 +46,11 @@ add this to your .autotest file, for perpetual greenosity
     @appname = 'myapp'
 
     Autotest.add_hook :red do
-      RestClient.put "
-    <http://stoplightapp.heroku.com/#{@appname}>
-    ", :status => 'red'
+      RestClient.put "http://stoplightapp.heroku.com/#{@appname}", :status => 'red'
     end
 
     Autotest.add_hook :green do
-      RestClient.put "
-    <http://stoplightapp.heroku.com/#{@appname}>
-    ", :status => 'green'
+      RestClient.put "http://stoplightapp.heroku.com/#{@appname}", :status => 'green'
     end`
 
 
