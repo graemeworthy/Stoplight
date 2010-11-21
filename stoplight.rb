@@ -25,21 +25,44 @@ end
 
 get '/:myapp' do
     setup(params[:myapp])
+    secret = params[:secret]
+ 
     return 404 unless @myapp
+    return 410 if  @myapp && secret && @myapp['secret'] == nil
+    return 403 if  @myapp && secret && @myapp['secret'] != secret 
     @myapp[:status] 
 end
 
-post '/:myapp' do 
+post '/:myapp' do
+    myapp = params[:myapp]
+    secret = params[:secret]
     setup(params[:myapp])
+    return 403 if @myapp && @myapp['secret'] != nil && @myapp['secret'] != secret
+    return 410 if @myapp && secret && @myapp['secret'] == nil
+ 
     @myapp ||= @@apps[@name] = {}   
+   
+    if secret
+
+        @myapp['secret'] = secret
+        return 201
+    end
     return 200
 end
 
-put '/:myapp' do
+put '/:myappr search results with leader-space' do
    setup(params[:myapp])
-   @myapp ||= @@apps[@name] = {}   
-  
-   case params[:status]
+   secret = params[:secret]
+   if (secret && !@myapp)
+       @myapp = @@apps[@name] = {}
+       @myapp['secret'] = secret
+   else 
+       @myapp ||= @@apps[@name] = {}        
+   end
+   return 403 if @myapp['secret'] && @myapp['secret'] != secret
+   return 410 if secret && @myapp['secret'] == nil
+ 
+  case params[:status]
    when 'green'
        @myapp[:status] = 'green'
    when 'yellow'
@@ -54,7 +77,17 @@ end
 
 delete '/:myapp' do
    setup(params[:myapp])
-    'deleting ' + params[:myapp]
+   secret = params[:secret]
+   return 403 if  @myapp['secret'] && @myapp['secret'] != secret
+   return 410 if  @myapp && secret && @myapp['secret'] == nil
+ 
     @@apps.delete @name
     return 200
+end
+
+class Stoplight
+  @@apps = {}
+  def initialize()
+  end
+
 end

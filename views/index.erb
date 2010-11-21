@@ -1,19 +1,193 @@
-<pre>
-Think of a name for your app, now think of that name when you see the word 'myapp'
 
-GET /myapp returns green or red or yellow
-PUT /myapp?status=green sets status green
-PUT /myapp?status=yellow sets status yellow
-PUT /myapp?status=red sets status red
-POST /myapp creates an app if there is none (put does this too)
-DELETE /myapp deletes an app
+<h1>
+Stoplight
+</h1>
 
-GET /myapp/front returns a pretty little javascript to keep you updated on your app's status
+<h2>
+A super simple status system
+</h2>
 
-Features: 
-Ultra-volatile datastore, resets whenever i deploy a new one, or heroku kills my instances.
+<p>
+Use it to to monitor your builds, your scripts, or whether you are in or out of the office.
+<br />
+Really it's up to you.
+</p>
+
+<h2>
+Features
+</h2>
+
+<p>
+Ultra-volatile datastore, resets whenever I deploy a new one, or heroku kills my instances.
+<br />
 Who cares, this is about what's going on right now.. any old messages are yesterdays news.
-      
+</p>
+
+<h2>
+Usage
+</h2>
+
+<p>
+Think of the name of your app, now think of that name when you see the word 'myapp'
+</p>
+
+<p>
+
+<strong>
+GET /myapp
+</strong>
+ returns green or red or yellow.
+<br />
+  
+<strong>
+PUT /myapp?status=green
+</strong>
+ sets status green
+<br />
+  
+<strong>
+PUT /myapp?status=yellow
+</strong>
+ sets status yellow
+<br />
+  
+<strong>
+PUT /myapp?status=red
+</strong>
+ sets status red
+<br />
+  
+<strong>
+POST /myapp
+</strong>
+ creates an app if there is none (put does this too)
+<br />
+  
+<strong>
+DELETE /myapp
+</strong>
+ deletes an app
+</p>
+
+<h2>
+Need a frontend?
+</h2>
+
+<p>
+
+<strong>
+GET /myapp/front
+</strong>
+ returns a pretty little javascript to keep you updated on your apps status
+</p>
+
+<h1>
+Usage Hints!
+</h1>
+
+<p>
+add this to your .autotest file, for perpetual greenosity
+</p>
+
+<pre>
+
+<code>
+require 'rest_client'                                                                                
+
+@appname = 'myapp'
+
+Autotest.add_hook :red do
+  RestClient.put "
+<a href='http://stoplightapp.heroku.com/#{@appname}'>
+http://stoplightapp.heroku.com/#{@appname}
+</a>
+", :status =&gt; 'red'
+end
+
+Autotest.add_hook :green do
+  RestClient.put "
+<a href='http://stoplightapp.heroku.com/#{@appname}'>
+http://stoplightapp.heroku.com/#{@appname}
+</a>
+", :status =&gt; 'green'
+end
+
+</code>
+
 </pre>
 
-learn more at: <a href='http://github.com/graemeworthy/Stoplight'>https://github.com/graemeworthy/Stoplight</agit >
+<h1>
+Need Security?
+</h1>
+
+<p>
+
+<em>
+POST /myapp?secret=something
+</em>
+ makes a stoplight 
+<em>
+only_you
+</em>
+ can change the colour of.. until the app resets( which it does at random)
+<br />
+ 
+<strong>
+PUT  /myapp?status=green
+</strong>
+ 403 access denied!
+<br />
+ 
+<strong>
+PUT  /myapp?status=green&amp;secret=something
+</strong>
+ updates the status
+<br />
+ 
+<strong>
+PUT  /myapp?status=green&amp;secret=somethingelse
+</strong>
+ access denied!
+<br />
+ 
+<strong>
+DELETE /myapp
+</strong>
+ 403 access denied
+<br />
+ 
+<strong>
+DELETE /myapp?secret=something
+</strong>
+ 200 done deal!
+</p>
+
+<h2>
+How to tell if the server has reset, or you've been snaked
+</h2>
+
+<p>
+if you use a secret on something created without a secret, 410 GONE because this is not your resource
+<br />
+if you use a secret on something with a different secret, 403 forbidden and you've been snaked!!
+</p>
+
+<h2>
+Awesome, how bout some ssl?
+</h2>
+
+<p>
+Sorry, no ssl
+</p>
+
+<p>
+learn more at: 
+<a href='http://github.com/graemeworthy/Stoplight'>
+
+<a href='https://github.com/graemeworthy/Stoplight'>
+https://github.com/graemeworthy/Stoplight
+</a>
+
+</agit >
+
+</p>
