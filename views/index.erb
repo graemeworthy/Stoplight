@@ -1,7 +1,45 @@
+<html>
+<head>
+  <title>
+  <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz&subset=latin' rel='stylesheet' type='text/css'>
+  <style>
+  body {
+    background: #99de20 url('bgnd-top.png') repeat-x;
+    padding-top: 0;
+  }
+  h1 ,h2, h3,h4,h5, h6 { font-family: 'Yanone Kaffeesatz', arial, serif; }
+  p, dl { font-family: verdana, arial, sans-serif;
+      font-size: 12px;}
+  dt {font-weight: bold;}
+  #wrapper  {                          
 
-<h1>
-Stoplight
-</h1>
+    margin-top: -10px;
+
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+  }  
+  #header {
+  }
+  #header h1 {
+    margin-top: 10px;
+    padding-top: 20px;
+    font-size: 150px; 
+    font-weight: bold;
+  }
+  #header h2 {
+    margin-top: -80px;
+    padding-top: 0px;
+    font-size: 50px; 
+    font-weight: bold;
+  }
+
+  </style>
+</head>
+<body>
+<div id="wrapper">
+<div id='header'>
+<h1>Stoplight</h1>
 
 <h2>
 A super simple status system
@@ -12,7 +50,8 @@ Use it to to monitor your builds, your scripts, or whether you are in or out of 
 <br />
 Really it's up to you.
 </p>
-
+</div>
+<div id="body">
 <h2>
 Features
 </h2>
@@ -31,54 +70,64 @@ Usage
 Think of the name of your app, now think of that name when you see the word 'myapp'
 </p>
 
-<p>
 
-<strong>
+<dl>
+<dt>
 GET /myapp
-</strong>
+</dt>
+<dd>
  returns green or red or yellow.
-<br />
-  
-<strong>
+</dd>  
+<dt>
 PUT /myapp?status=green
-</strong>
- sets status green
-<br />
-  
-<strong>
-PUT /myapp?status=yellow
-</strong>
- sets status yellow
-<br />
-  
-<strong>
-PUT /myapp?status=red
-</strong>
- sets status red
-<br />
-  
-<strong>
-POST /myapp
-</strong>
- creates an app if there is none (put does this too)
-<br />
-  
-<strong>
-DELETE /myapp
-</strong>
- deletes an app
-</p>
+</dt>
+<dd>
 
+ sets status green
+</dd>  
+<dt>
+PUT /myapp?status=yellow
+</dt>
+<dd>
+
+ sets status yellow
+</dd>  
+<dt>
+PUT /myapp?status=red
+</dt>
+<dd>
+
+ sets status red
+</dd>  
+<dt>
+POST /myapp
+</dt>
+<dd>
+
+ creates an app if there is none (put does this too)
+</dd>  
+<dt>
+DELETE /myapp
+</dt>
+<dd>
+
+ deletes an app
+</dd>
+</dl>
 <h2>
 Need a frontend?
 </h2>
 
 <p>
-
-<strong>
+<dl>
+<dt>
 GET /myapp/front
-</strong>
+</dt>
+<dd>
+
  returns a pretty little javascript to keep you updated on your apps status
+ </dd>
+</dl> 
 </p>
 
 <h1>
@@ -113,46 +162,59 @@ Need Security?
 </h1>
 
 <p>
-
-<em>
+<dl>
+<dt>
 POST /myapp?secret=something
-</em>
+</dt>
+<dd>
+
  makes a stoplight 
 <em>
 only_you
 </em>
  can change the colour of.. until the app resets( which it does at random)
-<br />
+</dd>
  
-<strong>
+<dt>
 PUT  /myapp?status=green
-</strong>
+</dt>
+<dd>
+
  403 access denied!
-<br />
+</dd>
  
-<strong>
+<dt>
 PUT  /myapp?status=green&amp;secret=something
-</strong>
+</dt>
+<dd>
+
  updates the status
-<br />
+</dd>
  
-<strong>
+<dt>
 PUT  /myapp?status=green&amp;secret=somethingelse
-</strong>
+</dt>
+<dd>
+
  access denied!
-<br />
+</dd>
  
-<strong>
+<dt>
 DELETE /myapp
-</strong>
+</dt>
+<dd>
+
  403 access denied
-<br />
+</dd>
  
-<strong>
+<dt>
 DELETE /myapp?secret=something
-</strong>
+</dt>
+<dd>
+
  200 done deal!
-</p>
+</dd>
+</dl>
 
 <h2>
 How to tell if the server has reset, or you've been snaked
@@ -180,6 +242,11 @@ learn more at:
 https://github.com/graemeworthy/Stoplight
 </a>
 
-</agit >
+</a >
 
 </p>
+</div>
+</div>
+</body>
+
+</html>
