@@ -57,7 +57,7 @@ add this to your .autotest file, for perpetual greenosity
 Need Security?
 -----------------
 
-_ POST /myapp?secret=something _ makes a stoplight _ only\_you _ can
+** POST /myapp?secret=something ** makes a stoplight _ only\_you _ can
 change the colour of.. until the app resets( which it does at random)  
 ** PUT /myapp?status=green ** 403 access denied!  
 ** PUT /myapp?status=green&secret=something ** updates the status  

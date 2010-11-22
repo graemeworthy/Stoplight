@@ -1,13 +1,2 @@
-Need 'security'?
-
-POST /myapp?secret=something makes a stoplight _only you_ can change the colour of.. untill the app resets( which it does at random)
-PUT  /myapp?status=green 403 access denied!
-PUT  /myapp?status=green&secret=something updates the status
-PUT  /myapp?status=green&secret=somethingelse access denied!
-DELETE /myapp 403 access denied
-DELETE /myapp?secret=something 200 done deal!
-
-How to tell if the server has reset, or you've been snaked
-
-if you use a secret on something created without a secret, 410 GONE because this is not your resource
-if you use a secret on something with a different secret, 403 forbidden you've been snaked
+Plans: 
+Eventmachine based websockets.. does heroku do those?

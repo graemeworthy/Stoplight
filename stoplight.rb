@@ -50,7 +50,7 @@ post '/:myapp' do
     return 200
 end
 
-put '/:myappr search results with leader-space' do
+put '/:myapp' do
    setup(params[:myapp])
    secret = params[:secret]
    if (secret && !@myapp)
