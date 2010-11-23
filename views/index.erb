@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>
+    <title>stoplight</title>
   <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz&subset=latin' rel='stylesheet' type='text/css'>
   <style>
   body {
@@ -79,21 +79,21 @@ GET /myapp
  returns green or red or yellow.
 </dd>  
 <dt>
-PUT /myapp?status=green
+PUT /myapp with status=green
 </dt>
 <dd>
 
  sets status green
 </dd>  
 <dt>
-PUT /myapp?status=yellow
+PUT /myapp with status=yellow
 </dt>
 <dd>
 
  sets status yellow
 </dd>  
 <dt>
-PUT /myapp?status=red
+PUT /myapp with status=red
 </dt>
 <dd>
 
@@ -133,7 +133,26 @@ GET /myapp/front
 <h1>
 Usage Hints!
 </h1>
+<p>
+Monitor the output of your cronjobs!
+(replace 'true' with your script, i'm just using it to return an affirmative response code)
+<dl>
+<dt>    
+true && curl -X PUT -d "status=green" http://stoplightapp.heroku.com/myapp || curl -X PUT -d "status=red" http://stoplightapp.heroku.com/times 
+</dt>
 
+<dd>
+   sets stuff GREEN!
+</dd>
+<dt>    
+false && curl -X PUT -d "status=green" http://stoplightapp.heroku.com/myapp || curl -X PUT -d "status=red" http://stoplightapp.heroku.com/times 
+</dt>
+
+<dd>
+   sets stuff RED!!
+</dd>
+</dl>   
+</p>  
 <p>
 add this to your .autotest file, for perpetual greenosity
 </p>
@@ -164,7 +183,7 @@ Need Security?
 <p>
 <dl>
 <dt>
-POST /myapp?secret=something
+POST /myapp with secret=something
 </dt>
 <dd>
 
@@ -176,7 +195,7 @@ only_you
 </dd>
  
 <dt>
-PUT  /myapp?status=green
+PUT  /myapp with status=green
 </dt>
 <dd>
 
@@ -184,7 +203,7 @@ PUT  /myapp?status=green
 </dd>
  
 <dt>
-PUT  /myapp?status=green&amp;secret=something
+PUT  /myapp with status=green and secret=something
 </dt>
 <dd>
 
@@ -192,7 +211,7 @@ PUT  /myapp?status=green&amp;secret=something
 </dd>
  
 <dt>
-PUT  /myapp?status=green&amp;secret=somethingelse
+PUT  /myapp with status=green and secret=somethingelse
 </dt>
 <dd>
 
@@ -208,7 +227,7 @@ DELETE /myapp
 </dd>
  
 <dt>
-DELETE /myapp?secret=something
+DELETE /myapp with secret=something
 </dt>
 <dd>
 
