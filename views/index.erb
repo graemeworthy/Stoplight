@@ -138,14 +138,14 @@ Monitor the output of your cronjobs!
 (replace 'true' with your script, i'm just using it to return an affirmative response code)
 <dl>
 <dt>    
-true && curl -X PUT -d "status=green" http://stoplightapp.heroku.com/myapp || curl -X PUT -d "status=red" http://stoplightapp.heroku.com/times 
+true && curl -X PUT -d "status=green" http://stoplightapp.heroku.com/myapp || curl -X PUT -d "status=red" http://stoplightapp.heroku.com/myapp 
 </dt>
 
 <dd>
    sets stuff GREEN!
 </dd>
 <dt>    
-false && curl -X PUT -d "status=green" http://stoplightapp.heroku.com/myapp || curl -X PUT -d "status=red" http://stoplightapp.heroku.com/times 
+false && curl -X PUT -d "status=green" http://stoplightapp.heroku.com/myapp || curl -X PUT -d "status=red" http://stoplightapp.heroku.com/myapp 
 </dt>
 
 <dd>
